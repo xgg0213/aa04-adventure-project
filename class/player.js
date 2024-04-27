@@ -35,20 +35,26 @@ class Player {
   takeItem(itemName) {
     // Picks up an item from the current room into the player's inventory
     // Your code here
-    this.items.push(itemName);
-    Room.item.shift(itemName);
+    item = this.currentRoom.getItemByName(itemName);
+    this.items.push(item);
+    let index = this.currentRoom.items.indexOf(item);
+    this.currentRoom.items.splice(index,1)
   }
 
   dropItem(itemName) {
     // Drops an item the player is holding into their current room
     // Your code here
-    this.items.shift(itemName);
+    item = this.getItemByName(itemName);
+    this.currentRoom.items.push(item);
+    let index = this.items.indexOf(item);
+    this.items.splice(index,1)
   }
 
   eatItem(itemName) {
     // Allow the player to eat food items, but not non-food items
     // Your code here
-    let index = items.indexOf(itemName);
+    // if (itemName === Food.name) ;
+    let index = this.items.indexOf(itemName);
     if (itemName instanceof Food) {
       this.items.splice(index, 1);
     }
@@ -67,8 +73,8 @@ class Player {
 }
 
 let item = new Item("rock", "just a simple rock");
-// let room = new Room("Test Room", "A test room");
-// let player = new Player("player", room);
+let room = new Room("Test Room", "A test room");
+let player = new Player("player", room);
 console.log(item,'---------------');
 
 module.exports = {

@@ -94,7 +94,7 @@ describe ('Food', function () {
     let food = new Food("sandwich", "a delicious sandwich");
     let room = new Room("Test Room", "A test room");
     let player = new Player("player", room);
-
+    
     player.items.push(food);
     expect(player.items.length).to.equal(1);
 

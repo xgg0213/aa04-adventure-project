@@ -58,9 +58,9 @@ class Player {
   getItemByName(name) {
     // Retrieves an item from a player's inventory by item name
     // Your code here
-    items.forEach(item => {
-      if (item === name) {
-        return item;
+    return this.items.find(item => {
+      if (item.name === name) {
+       return item;
       }
     });
   }

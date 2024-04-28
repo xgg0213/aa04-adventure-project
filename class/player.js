@@ -53,10 +53,11 @@ class Player {
   eatItem(itemName) {
     // Allow the player to eat food items, but not non-food items
     // Your code here
-    // if (itemName === Food.name) ;
-    let index = this.items.indexOf(itemName);
-    if (itemName instanceof Food) {
-      this.items.splice(index, 1);
+    // Finds the item in the array that matches the itemName string arg
+    let item = this.items.find(item => item.name === itemName)
+    if (item instanceof Food) {
+      // filters the elements that are not the food item into a new array, effectively removing the food item
+      this.items = this.items.filter(ele => ele !== item);
     }
     return this.items;
   }
